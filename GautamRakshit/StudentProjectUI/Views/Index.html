@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Styles/Site.css">
+    
+<title>Academics</title>
+</head>
+<body> 
+  
+<div class="container GapBottom">      
+
+    <nav class="navCustom navbar navbar-default  navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="brand">Solution</div>
+        </div>
+    
+        <!--085571 Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home <span class="sr-only">(current)</span></a></li>
+            <li><a class="tablinks" onclick="openTab(event, 'CreateStudent')" href="#">Create Student</a></li>
+            <li><a class="tablinks" onclick="openTab(event, 'CreateCourse')" href="#">Create Course</a></li>
+            <li><a class="tablinks" onclick="openTab(event, 'SubscribeCourse')" href="#">Subscribe Course</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Students</a></li>
+                <li><a href="#">Course Subscriptions</a></li>
+                <!-- <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li> -->
+              </ul>
+            </li> 
+          </ul>        
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+           </ul>
+        </div>
+         
+        </div><!-- /.navbar-collapse -->
+      </nav>
+      </div><!-- /.container-fluid -->
+    
+
+<div class="tabcontents">
+  
+  <div class="col-md-4 col-md-offset-3 alert alert-success success">
+    <strong>Record Saved Successfully!</strong>
+  </div>
+  <div class="col-md-4 col-md-offset-3 alert alert-danger error">
+    <strong>Error Occured</strong>
+  </div>
+<!-- Tab content -->
+<div id="CreateStudent" class="tabcontent">
+  <div class="container col-md-4 col-md-offset-3">
+    <div  class="panel panel-info ">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Create Student</h3>  
+                 </div>
+   <div class="panel-body customPanelBgColor">
+    <form action="/" id="studentForm">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName"  required />
+            <div  class="help-block">First Name is required</div>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Last Name</label>
+          <input type="text" class="form-control" name="lastName"  required />
+          <div  class="help-block">Last Name is required</div>
+        </div>
+        <div class="form-group">
+          <label for="firstName">DOB</label>
+          <input type="date" class="form-control" name="dob" id="dob" placeholder="yyyy-mm-dd" required />
+          
+          <div  class="help-block">Date of Birth is required</div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Contact NO</label>
+            <input type="number" class="form-control" maxlength="10" name="contactNo"  required />
+            <div *ngIf="f.submitted && !lastName.valid" class="help-block">Contact No is required</div>
+        </div>      
+        
+        <div class="form-group">
+            <button id="submitStudent" type="submit" class="btn btn-success">Submit</button>
+            <a class="btn btn-link">Cancel</a>
+        </div>
+        
+    </form>
+</div>
+    </div>
+    <div col-md-2>
+      <button type="button" class="btn btn-primary" id="prev">Previous</button>
+      <input type="text" id="currentPageNo">
+      <span>out of </span>
+      <span id="totalPages">30</span>
+      <button type="button" class="btn btn-primary" id="next">Next</button>
+    </div>
+    <!-- Table -->
+    
+    <table id="studList" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">FirstName</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Dob</th>
+          <th scope="col">ContactNo</th>
+          <th scope="col">Actions</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td><a date-id="1" href="#">Edit</a>|<a date-id="1" href="#">Delete</a></td>
+        </tr>
+       
+      </tbody>
+    </table>
+</div>
+</div>
+
+<div id="CreateCourse" class="tabcontent">
+  <div class="container col-md-4 col-md-offset-3">
+    <div  class="panel panel-info ">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Create Course</h3>  
+                 </div>
+                 <div class="panel-body customPanelBgColor">
+    <form id="courseForm">
+        <div class="form-group">
+            <label for="firstName">Course Name</label>
+            <input type="text" class="form-control" name="courseName"  required />
+            <div  class="help-block">Course Name is required</div>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Course Details</label>
+          <!-- <input type="text" class="form-control" name="courseName"  required /> -->
+          <textarea class="form-control" name="courseDetail"></textarea>
+          <!-- <textarea class="form-control" name="courseDetails"  required/> -->
+          <div  class="help-block">Course Detail is required</div>
+        </div>        
+        
+        <div class="form-group">
+            <button id="submitCourse" type="submit" class="btn btn-success">Submit</button>
+            <a class="btn btn-link">Cancel</a>
+        </div>
+        
+    </form>
+</div>
+    </div>
+    <div col-md-2>
+      <button type="button" class="btn btn-primary" id="prevCourse">Previous</button>
+      <input type="text" id="currentCoursePageNo">
+      <span>out of </span>
+      <span id="totalCoursePages">30</span>
+      <button type="button" class="btn btn-primary" id="nextCourse">Next</button>
+    </div>
+    <!-- Table -->
+    
+    <table id="courseList" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">CourseName</th>
+          <th scope="col">CourseDetail</th>          
+          <th scope="col">Actions</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>          
+          <td><a date-id="1" href="#">Edit</a>|<a date-id="1" href="#">Delete</a></td>
+        </tr>
+       
+      </tbody>
+    </table>
+</div>
+</div>
+<div id="SubscribeCourse" class="tabcontent">
+  <div class="container col-md-4 col-md-offset-3">
+    <div  class="panel panel-info ">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Subscribe Course</h3>  
+                 </div>
+   <div class="panel-body customPanelBgColor">
+        <form id="courseSubscribeForm">
+            <div class="form-group">
+                <label for="studentId">Select Student</label>
+                <select  class="form-control" id="StudId" name="StudId"  required >
+                  <option value="0">Please Select</option>
+                    
+                </select>
+                <div  class="help-block">Please Select Student</div>
+            </div>
+            <div class="form-group">
+              <label for="CourseId"> Select Course</label>              
+              <select  class="form-control" name="CourseId" id="CourseId"  required>                
+                <option value="0">Please Select</option>
+              </select>
+              <div  class="help-block">Please Select Course</div>
+            </div>       
+            
+            <div class="form-group">
+                <button id="submitSubscribe" type="submit" class="btn btn-success">Submit</button>
+                <a class="btn btn-link">Cancel</a>
+            </div>
+            
+        </form>
+      </div>
+    </div>
+   
+    <div >
+      <button type="button" class="btn btn-primary" id="prevSubs">Previous</button>
+      <input type="text" id="currentSubsPageNo">
+      <span>out of </span>
+      <span id="totalSubsPages">30</span>
+      <button type="button" class="btn btn-primary" id="nextSubs">Next</button>
+    </div>
+    <!-- Table -->
+    
+    <table id="subscriptionList" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">StudentName</th>
+          <th scope="col">CourseName</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>PlaceHolder row</td>
+          <td>PlaceHolder Row</td>          
+          
+        </tr>
+       
+      </tbody>
+    </table>
+</div>
+</div>
+  </div>
+<!-- Tab links -->
+
+</div>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="../Scripts/Index.js"></script>
+    <script src="../Scripts/Student.js"></script>
+    <script src="../Scripts/Course.js"></script>
+    <script src="../Scripts/Subscription.js"></script>
+
+</body>
+</html>
