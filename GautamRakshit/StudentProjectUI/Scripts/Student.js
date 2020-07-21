@@ -8,12 +8,17 @@ $( document ).ready(function() {
     var editID;
     var that=this;
     $("#studentForm").submit(function(event){
-        event.preventDefault();      
+        event.preventDefault(); 
+             
         var form_data = new FormData(this); 
         var object={};
         form_data.forEach(function(value, key){
             object[key] = value;
         });
+       if(isValidModel()){
+        $(".tabcontents .error").html('<strong>Model Invalid</strong>').show();
+
+       }
         if(editID){
             object.StudId=editID;
         }
@@ -72,6 +77,14 @@ $( document ).ready(function() {
          });
 
 });
+function isValid(obj){
+ if(obj && obj.firstName && obj.lastName && obj.dob && obj.contactNo){
+return true;
+ }else
+ {return 
+    false;
+}
+};
 function deleteStudent(deleteID){
     var studId={};
     studId.Id=deleteID;
@@ -89,7 +102,7 @@ function deleteStudent(deleteID){
                 //console.log('response.result',response.Result);
             }
             else{
-                $(".tabcontents .success").html('<strong>'+response.Error+'</strong>').show();
+                $(".tabcontents .error").html('<strong>'+response.Error+'</strong>').show();
             }
             
         }

@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     $(".tabcontents .alert").hide();
+    $(".help-block").hide();
    var tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
